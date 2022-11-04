@@ -10,5 +10,9 @@ public interface IDao {
 	
 	public void writeDao(String mwriter, String mcontent);
 	
+	public ContentDto mviewDao(String mid);
+	
+	public void modifyDao(String mwriter, String mcontent, String mid);
+	
 	public void deleteDao(String mid);
 }

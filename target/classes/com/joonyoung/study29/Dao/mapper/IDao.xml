@@ -16,4 +16,12 @@
 	<select id="listDao" resultType="com.joonyoung.study29.Dto.ContentDto">
 		SELECT * FROM board ORDER BY mid DESC
 	</select>
+	
+	<select id="mviewDao" resultType="com.joonyoung.study29.Dto.ContentDto">
+		SELECT * FROM board WHERE mid=#{param1}
+	</select>
+	
+	<update id="modifyDao">
+		UPDATE board SET mwriter=#{param1}, mcontent=#{param2} WHERE mid=#{param3}
+	</update>
 </mapper>

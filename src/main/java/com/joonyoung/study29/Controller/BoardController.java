@@ -67,4 +67,32 @@ public class BoardController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping(value = "mview")
+	public String mview(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String mid = request.getParameter("mid");
+		ContentDto dtos = dao.mviewDao(mid);
+		
+		model.addAttribute("mdto", dtos);
+		
+		return "mview";
+	}
+	
+	@RequestMapping(value = "modify")
+	public String modify(HttpServletRequest request) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String mwriter = request.getParameter("mwriter");
+		String mcontent = request.getParameter("mcontent");
+		String mid = request.getParameter("mid");
+		
+		dao.modifyDao(mwriter, mcontent, mid);
+		
+		return "redirect:list";
+	}
+	
+	
 }
